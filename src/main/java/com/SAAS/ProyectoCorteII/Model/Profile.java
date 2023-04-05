@@ -6,6 +6,8 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import java.util.Date;
 
+@Entity
+@Table(name = "Profile")
 public class Profile {
     @Id
     @Column(name = "id",unique = true,nullable = false)
@@ -14,6 +16,8 @@ public class Profile {
     private String image;
     @Column(name = "phone")
     private int phone;
+    @OneToOne(mappedBy = "profile", cascade = CascadeType.ALL)
+    private Employee employee;
     @Column(name = "createdAt")
     @CreationTimestamp
     private Date createdAt;
@@ -23,12 +27,6 @@ public class Profile {
 
     public Profile() {
 
-    }
-
-    public Profile(int id, String image, int phone) {
-        this.id = id;
-        this.image = image;
-        this.phone = phone;
     }
 
     public int getId() {
@@ -53,6 +51,14 @@ public class Profile {
 
     public void setPhone(int phone) {
         this.phone = phone;
+    }
+
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
     }
 
     public Date getCreatedAt() {

@@ -4,26 +4,29 @@ import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "Employee")
 public class Employee {
-
     @Id
     @Column(name = "id",unique = true,nullable = false)
     private int id;
 
     @Column(name = "email")
     private String email;
-    @Column(name = "profile_id")
-    private int profile_id;
+    @OneToOne
+    @JoinColumn(name = "profile_id", referencedColumnName = "id")
+    private Profile profile;
     @Column(name = "role")
     private int role;
-    @Column(name = "enterprise_id")
-    private int enterprise_id;
-    @Column(name = "transaction_id")
-    private int transaction_id;
+    @ManyToOne
+    @JoinColumn(name="enterprise_id",referencedColumnName = "id")
+    private Enterprise enterprise;
+    @OneToMany(mappedBy = "employee")
+    private List<Transaction> transactionList = new ArrayList<>();
     @Column(name = "createdAt")
     @CreationTimestamp
     private Date createdAt;
@@ -32,15 +35,6 @@ public class Employee {
     private Date updatedAt;
 
     public Employee() {
-    }
-
-    public Employee(int id, String email, int profile_id, int role, int enterprise_id, int transaction_id) {
-        this.id = id;
-        this.email = email;
-        this.profile_id = profile_id;
-        this.role = role;
-        this.enterprise_id = enterprise_id;
-        this.transaction_id = transaction_id;
     }
 
     public int getId() {
@@ -59,12 +53,12 @@ public class Employee {
         this.email = email;
     }
 
-    public int getProfile_id() {
-        return profile_id;
+    public Profile getProfile() {
+        return profile;
     }
 
-    public void setProfile_id(int profile_id) {
-        this.profile_id = profile_id;
+    public void setProfile(Profile profile) {
+        this.profile = profile;
     }
 
     public int getRole() {
@@ -75,20 +69,20 @@ public class Employee {
         this.role = role;
     }
 
-    public int getEnterprise_id() {
-        return enterprise_id;
+    public Enterprise getEnterprise() {
+        return enterprise;
     }
 
-    public void setEnterprise_id(int enterprise_id) {
-        this.enterprise_id = enterprise_id;
+    public void setEnterprise(Enterprise enterprise) {
+        this.enterprise = enterprise;
     }
 
-    public int getTransaction_id() {
-        return transaction_id;
+    public List<Transaction> getTransactionList() {
+        return transactionList;
     }
 
-    public void setTransaction_id(int transaction_id) {
-        this.transaction_id = transaction_id;
+    public void setTransactionList(List<Transaction> transactionList) {
+        this.transactionList = transactionList;
     }
 
     public Date getCreatedAt() {

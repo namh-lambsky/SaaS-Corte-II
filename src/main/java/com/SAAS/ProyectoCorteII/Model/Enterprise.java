@@ -4,8 +4,12 @@ import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
+@Entity
+@Table(name = "Enterprise")
 public class Enterprise {
     @Id
     @Column(name = "id",unique = true,nullable = false)
@@ -18,10 +22,10 @@ public class Enterprise {
     private int phone;
     @Column(name = "address")
     private String address;
-    @Column(name = "user_id")
-    private int user_id;
-    @Column(name = "transaction_id")
-    private int transaction_id;
+    @OneToMany(mappedBy = "enterprise")
+    private List<Employee> employeeList = new ArrayList<>();
+    @OneToMany(mappedBy = "enterprise")
+    private List<Transaction> transactionList = new ArrayList<>();
     @Column(name = "createdAt")
     @CreationTimestamp
     private Date createdAt;
@@ -32,15 +36,6 @@ public class Enterprise {
     public Enterprise() {
     }
 
-    public Enterprise(int id, String name, String document, int phone, String address, int user_id, int transaction_id) {
-        this.id = id;
-        this.name = name;
-        this.document = document;
-        this.phone = phone;
-        this.address = address;
-        this.user_id = user_id;
-        this.transaction_id = transaction_id;
-    }
 
     public int getId() {
         return id;
@@ -82,20 +77,20 @@ public class Enterprise {
         this.address = address;
     }
 
-    public int getUser_id() {
-        return user_id;
+    public List<Employee> getEmployeeList() {
+        return employeeList;
     }
 
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
+    public void setEmployeeList(List<Employee> employeeList) {
+        this.employeeList = employeeList;
     }
 
-    public int getTransaction_id() {
-        return transaction_id;
+    public List<Transaction> getTransactionList() {
+        return transactionList;
     }
 
-    public void setTransaction_id(int transaction_id) {
-        this.transaction_id = transaction_id;
+    public void setTransactionList(List<Transaction> transactionList) {
+        this.transactionList = transactionList;
     }
 
     public Date getCreatedAt() {

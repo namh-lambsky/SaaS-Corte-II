@@ -6,8 +6,9 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import java.util.Date;
 
+@Entity
+@Table(name = "Transaction")
 public class Transaction {
-
     @Id
     @Column(name = "id",unique = true,nullable = false)
     private int id;
@@ -15,10 +16,12 @@ public class Transaction {
     private String concept;
     @Column(name = "amount")
     private int amount;
-    @Column(name = "user_id")
-    private int user_id;
-    @Column(name = "enterprise_id")
-    private int enterprise_id;
+    @ManyToOne
+    @JoinColumn(name = "employee_id", referencedColumnName = "id")
+    private Employee employee;
+    @ManyToOne
+    @JoinColumn(name = "enterprise_id", referencedColumnName = "id")
+    private Enterprise enterprise;
     @Column(name = "createdAt")
     @CreationTimestamp
     private Date createdAt;
@@ -27,14 +30,6 @@ public class Transaction {
     private Date updatedAt;
 
     public Transaction() {
-    }
-
-    public Transaction(int id, String concept, int amount, int user_id, int enterprise_id) {
-        this.id = id;
-        this.concept = concept;
-        this.amount = amount;
-        this.user_id = user_id;
-        this.enterprise_id = enterprise_id;
     }
 
     public int getId() {
@@ -61,20 +56,20 @@ public class Transaction {
         this.amount = amount;
     }
 
-    public int getUser_id() {
-        return user_id;
+    public Employee getEmployee() {
+        return employee;
     }
 
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
     }
 
-    public int getEnterprise_id() {
-        return enterprise_id;
+    public Enterprise getEnterprise() {
+        return enterprise;
     }
 
-    public void setEnterprise_id(int enterprise_id) {
-        this.enterprise_id = enterprise_id;
+    public void setEnterprise(Enterprise enterprise) {
+        this.enterprise = enterprise;
     }
 
     public Date getCreatedAt() {
