@@ -16,7 +16,7 @@ public class Profile {
     private String image;
     @Column(name = "phone",nullable = false)
     private int phone;
-    @OneToOne(mappedBy = "profile", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "profile")
     private Employee employee;
     @Column(name = "createdAt")
     @CreationTimestamp

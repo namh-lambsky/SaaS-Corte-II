@@ -13,9 +13,8 @@ import java.util.List;
 public class Enterprise {
     @Id
     @Column(name = "id",unique = true,nullable = false)
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Column(name = "name",nullable = false)
+        @Column(name = "name",nullable = false)
     private String name;
     @Column(name = "document",nullable = false)
     private String document;
