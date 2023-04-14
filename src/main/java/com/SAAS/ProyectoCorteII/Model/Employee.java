@@ -15,12 +15,12 @@ public class Employee {
     @Column(name = "id",unique = true,nullable = false)
     private int id;
 
-    @Column(name = "email")
+    @Column(name = "email",nullable = false)
     private String email;
     @OneToOne
     @JoinColumn(name = "profile_id", referencedColumnName = "id")
     private Profile profile;
-    @Column(name = "role")
+    @Column(name = "role",nullable = false)
     private int role;
     @ManyToOne
     @JoinColumn(name="enterprise_id",referencedColumnName = "id")

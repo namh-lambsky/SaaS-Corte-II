@@ -12,15 +12,15 @@ public class Transaction {
     @Id
     @Column(name = "id",unique = true,nullable = false)
     private int id;
-    @Column(name = "concept")
+    @Column(name = "concept",nullable = false)
     private String concept;
-    @Column(name = "amount")
+    @Column(name = "amount",nullable = false)
     private int amount;
     @ManyToOne
-    @JoinColumn(name = "employee_id", referencedColumnName = "id")
+    @JoinColumn(name = "employee_id", referencedColumnName = "id",nullable = false)
     private Employee employee;
     @ManyToOne
-    @JoinColumn(name = "enterprise_id", referencedColumnName = "id")
+    @JoinColumn(name = "enterprise_id", referencedColumnName = "id",nullable = false)
     private Enterprise enterprise;
     @Column(name = "createdAt")
     @CreationTimestamp

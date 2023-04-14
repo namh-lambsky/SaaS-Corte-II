@@ -12,9 +12,9 @@ public class Profile {
     @Id
     @Column(name = "id",unique = true,nullable = false)
     private int id;
-    @Column(name = "image")
+    @Column(name = "image",nullable = false)
     private String image;
-    @Column(name = "phone")
+    @Column(name = "phone",nullable = false)
     private int phone;
     @OneToOne(mappedBy = "profile", cascade = CascadeType.ALL)
     private Employee employee;
