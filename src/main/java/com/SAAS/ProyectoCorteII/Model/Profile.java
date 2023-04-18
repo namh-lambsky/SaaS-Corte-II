@@ -1,32 +1,46 @@
 package com.SAAS.ProyectoCorteII.Model;
 
-import jakarta.persistence.*;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
 
-import java.util.Date;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import jakarta.persistence.*;
+
+import java.sql.Date;
 
 @Entity
-@Table(name = "Profile")
+@Table(name = "profile")
+@JsonIdentityInfo(scope =Profile.class , generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id")
 public class Profile {
     @Id
-    @Column(name = "id",unique = true,nullable = false)
+    @Column(name = "id")
     private int id;
-    @Column(name = "image",nullable = false)
+
+    @Column(name = "image", nullable = false)
     private String image;
-    @Column(name = "phone",nullable = false)
-    private int phone;
-    @OneToOne(mappedBy = "profile")
+
+    @Column(name = "phone")
+    private long phone;
+
+    @Column(name = "created_at")
+    private Date created_at;
+
+    @Column(name = "updated_at")
+    private Date updated_at;
+
+    @OneToOne(mappedBy = "profile", cascade = CascadeType.ALL)
     private Employee employee;
-    @Column(name = "createdAt")
-    @CreationTimestamp
-    private Date createdAt;
-    @Column(name = "updatedAt")
-    @UpdateTimestamp
-    private Date updatedAt;
 
     public Profile() {
+    }
 
+    public Profile(int id, String image, long phone, Date created_at, Date updated_at, Employee employee) {
+        this.id = id;
+        this.image = image;
+        this.phone = phone;
+        this.created_at = created_at;
+        this.updated_at = updated_at;
+        this.employee = employee;
     }
 
     public int getId() {
@@ -45,12 +59,28 @@ public class Profile {
         this.image = image;
     }
 
-    public int getPhone() {
+    public long getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(long phone) {
         this.phone = phone;
+    }
+
+    public Date getCreated_at() {
+        return created_at;
+    }
+
+    public void setCreated_at(Date created_at) {
+        this.created_at = created_at;
+    }
+
+    public Date getUpdated_at() {
+        return updated_at;
+    }
+
+    public void setUpdated_at(Date updated_at) {
+        this.updated_at = updated_at;
     }
 
     public Employee getEmployee() {
@@ -61,19 +91,16 @@ public class Profile {
         this.employee = employee;
     }
 
-    public Date getCreatedAt() {
-        return createdAt;
+    @Override
+    public String toString() {
+        return "Profile{" +
+                "id=" + id +
+                ", image='" + image + '\'' +
+                ", phone=" + phone +
+                ", created_at=" + created_at +
+                ", updated_at=" + updated_at +
+                ", employee=" + employee.getId() +
+                '}';
     }
 
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public Date getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(Date updatedAt) {
-        this.updatedAt = updatedAt;
-    }
 }

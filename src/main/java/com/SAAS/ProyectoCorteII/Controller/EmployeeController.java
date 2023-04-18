@@ -1,6 +1,5 @@
 package com.SAAS.ProyectoCorteII.Controller;
 
-
 import com.SAAS.ProyectoCorteII.Model.Employee;
 import com.SAAS.ProyectoCorteII.Services.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,28 +12,29 @@ import java.util.Optional;
 @RequestMapping("/employee")
 public class EmployeeController {
     @Autowired
-    private EmployeeService employeeService;
+    EmployeeService employeeService;
+
     @GetMapping
-    public ArrayList<Employee> getEmployee(){
+    public ArrayList<Employee>getEmployees(){
         return this.employeeService.getEmployees();
     }
 
     @GetMapping(path = "/{id}")
-    public Optional<Employee> getEmployeeById(@PathVariable int id){
+    public Employee getEmployeeById(@PathVariable int id){
         return this.employeeService.getEmployeeById(id);
     }
 
-    @PostMapping("/new")
-    public Employee saveEmployee(@RequestBody Employee Employee){
-        return this.employeeService.saveEmployee(Employee);
+    @PostMapping(path = "/new")
+    public Employee saveEmployee(@RequestBody Employee employee){
+        return this.employeeService.saveEmployee(employee);
     }
 
-    @PutMapping("/update-{id}")
-    public Employee updateEmployee(@RequestBody Employee Employee,@PathVariable int id){
-        return this.employeeService.updateEmployeeById(Employee,id);
+    @PutMapping(path = "/update-{id}")
+    public Employee updateEmployee(@RequestBody Employee request,  @PathVariable int id){
+        return this.employeeService.updateEmployeeById(request,id);
     }
 
-    @DeleteMapping("/delete-{id}")
+    @DeleteMapping(path = "/delete-{id}")
     public String deleteEmployee(@PathVariable int id){
         boolean isDeleted = this.employeeService.deleteEmployeeById(id);
         if (isDeleted){
@@ -44,6 +44,4 @@ public class EmployeeController {
             return "Unexpected error: Employee with id:"+id+" was not deleted";
         }
     }
-
-
 }

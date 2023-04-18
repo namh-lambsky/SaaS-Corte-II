@@ -1,6 +1,5 @@
 package com.SAAS.ProyectoCorteII.Controller;
 
-
 import com.SAAS.ProyectoCorteII.Model.Profile;
 import com.SAAS.ProyectoCorteII.Services.ProfileService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,28 +12,29 @@ import java.util.Optional;
 @RequestMapping("/profile")
 public class ProfileController {
     @Autowired
-    private ProfileService profileService;
+    ProfileService profileService;
+
     @GetMapping
-    public ArrayList<Profile> getProfile(){
-        return this.profileService.getProfile();
+    public ArrayList<Profile>getProfiles(){
+        return this.profileService.getProfiles();
     }
 
     @GetMapping(path = "/{id}")
-    public Optional<Profile> getProfileById(@PathVariable int id){
+    public Profile getProfileById(@PathVariable int id){
         return this.profileService.getProfileById(id);
     }
 
-    @PostMapping("/new")
-    public Profile saveProfile(@RequestBody Profile Profile){
-        return this.profileService.saveProfile(Profile);
+    @PostMapping(path = "/new")
+    public Profile saveProfile(@RequestBody Profile profile){
+        return this.profileService.saveProfile(profile);
     }
 
-    @PutMapping("/update-{id}")
-    public Profile updateProfile(@RequestBody Profile Profile,@PathVariable int id){
-        return this.profileService.updateProfileById(Profile,id);
+    @PutMapping(path = "/update-{id}")
+    public Profile updateProfile(@RequestBody Profile request,  @PathVariable int id){
+        return this.profileService.updateProfileById(request,id);
     }
 
-    @DeleteMapping("/delete-{id}")
+    @DeleteMapping(path = "/delete-{id}")
     public String deleteProfile(@PathVariable int id){
         boolean isDeleted = this.profileService.deleteProfileById(id);
         if (isDeleted){
@@ -44,6 +44,4 @@ public class ProfileController {
             return "Unexpected error: Profile with id:"+id+" was not deleted";
         }
     }
-
-
 }

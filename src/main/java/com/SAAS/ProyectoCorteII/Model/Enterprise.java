@@ -1,41 +1,61 @@
 package com.SAAS.ProyectoCorteII.Model;
 
-import jakarta.persistence.*;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
 
-import java.util.ArrayList;
-import java.util.Date;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import jakarta.persistence.*;
+
+
+import java.sql.Date;
 import java.util.List;
 
 @Entity
-@Table(name = "Enterprise")
+@Table(name = "enterprise")
+@JsonIdentityInfo(scope= Enterprise.class ,generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id")
 public class Enterprise {
     @Id
-    @Column(name = "id",unique = true,nullable = false)
+    @Column(name = "id")
     private int id;
-        @Column(name = "name",nullable = false)
+
+    @Column(name = "name")
     private String name;
-    @Column(name = "document",nullable = false)
+
+    @Column(name = "document")
     private String document;
-    @Column(name = "phone",nullable = false)
-    private int phone;
-    @Column(name = "address",nullable = false)
+
+    @Column(name = "phone")
+    private long phone;
+
+    @Column(name = "address")
     private String address;
-    @OneToMany(mappedBy = "enterprise")
-    private List<Employee> employeeList = new ArrayList<>();
-    @OneToMany(mappedBy = "enterprise")
-    private List<Transaction> transactionList = new ArrayList<>();
-    @Column(name = "createdAt")
-    @CreationTimestamp
-    private Date createdAt;
-    @Column(name = "updatedAt")
-    @UpdateTimestamp
-    private Date updatedAt;
+
+    @Column(name = "created_at")
+    private Date created_at;
+
+    @Column(name = "updated_at")
+    private Date updated_at;
+
+    @OneToMany(mappedBy = "enterprise", cascade = CascadeType.ALL)
+    private List<Employee> employees;
+
+    @OneToMany(mappedBy = "enterprise", cascade = CascadeType.ALL)
+    private List<Transaction> transactions;
 
     public Enterprise() {
     }
 
+    public Enterprise(int id, String name, String document, long phone, String address, Date created_at, Date updated_at, List<Employee> employees, List<Transaction> transactions) {
+        this.id = id;
+        this.name = name;
+        this.document = document;
+        this.phone = phone;
+        this.address = address;
+        this.created_at = created_at;
+        this.updated_at = updated_at;
+        this.employees = employees;
+        this.transactions = transactions;
+    }
 
     public int getId() {
         return id;
@@ -61,11 +81,11 @@ public class Enterprise {
         this.document = document;
     }
 
-    public int getPhone() {
+    public long getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(long phone) {
         this.phone = phone;
     }
 
@@ -77,35 +97,50 @@ public class Enterprise {
         this.address = address;
     }
 
-    public List<Employee> getEmployeeList() {
-        return employeeList;
+    public Date getCreated_at() {
+        return created_at;
     }
 
-    public void setEmployeeList(List<Employee> employeeList) {
-        this.employeeList = employeeList;
+    public void setCreated_at(Date created_at) {
+        this.created_at = created_at;
     }
 
-    public List<Transaction> getTransactionList() {
-        return transactionList;
+    public Date getUpdated_at() {
+        return updated_at;
     }
 
-    public void setTransactionList(List<Transaction> transactionList) {
-        this.transactionList = transactionList;
+    public void setUpdated_at(Date updated_at) {
+        this.updated_at = updated_at;
     }
 
-    public Date getCreatedAt() {
-        return createdAt;
+    public List<Employee> getEmployees() {
+        return employees;
     }
 
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
+    public void setEmployees(List<Employee> employees) {
+        this.employees = employees;
     }
 
-    public Date getUpdatedAt() {
-        return updatedAt;
+    public List<Transaction> getTransactions() {
+        return transactions;
     }
 
-    public void setUpdatedAt(Date updatedAt) {
-        this.updatedAt = updatedAt;
+    public void setTransactions(List<Transaction> transactions) {
+        this.transactions = transactions;
+    }
+
+    @Override
+    public String toString() {
+        return "Enterprise{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", document='" + document + '\'' +
+                ", phone=" + phone +
+                ", address='" + address + '\'' +
+                ", created_at=" + created_at +
+                ", updated_at=" + updated_at +
+                ", employees=" + employees +
+                ", transactions=" + transactions +
+                '}';
     }
 }

@@ -1,40 +1,59 @@
 package com.SAAS.ProyectoCorteII.Model;
 
+import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
 
-import java.util.ArrayList;
-import java.util.Date;
+
+import java.sql.Date;
 import java.util.List;
 
 @Entity
-@Table(name = "Employee")
+@Table(name = "employee")
+@JsonIdentityInfo( scope = Employee.class ,generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id")
 public class Employee {
     @Id
-    @Column(name = "id",unique = true,nullable = false)
+    @Column(name = "id")
     private int id;
 
-    @Column(name = "email",nullable = false)
+    @Column(name = "email")
     private String email;
+
+    @Column(name = "role")
+    private Role role;
+
+
+    @Column(name = "created_at")
+    private Date created_at;
+
+
+    @Column(name = "updated_at")
+    private Date updated_at;
+
     @OneToOne
-    @JoinColumn(name = "profile_id", referencedColumnName = "id")
+    @JoinColumn(name = "profile_id",referencedColumnName = "id")
     private Profile profile;
-    @Column(name = "role",nullable = false)
-    private int role;
+
     @ManyToOne
-    @JoinColumn(name="enterprise_id",referencedColumnName = "id")
+    @JoinColumn(name = "enterprise_id", referencedColumnName = "id")
     private Enterprise enterprise;
-    @OneToMany(mappedBy = "employee")
-    private List<Transaction> transactionList = new ArrayList<>();
-    @Column(name = "createdAt")
-    @CreationTimestamp
-    private Date createdAt;
-    @Column(name = "updatedAt")
-    @UpdateTimestamp
-    private Date updatedAt;
+
+    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
+    private List<Transaction> transactions;
+
 
     public Employee() {
+    }
+
+    public Employee(int id, String email, Role role, Date created_at, Date updated_at, Profile profile, Enterprise enterprise, List<Transaction> transactions) {
+        this.id = id;
+        this.email = email;
+        this.role = role;
+        this.created_at = created_at;
+        this.updated_at = updated_at;
+        this.profile = profile;
+        this.enterprise = enterprise;
+        this.transactions = transactions;
     }
 
     public int getId() {
@@ -53,20 +72,36 @@ public class Employee {
         this.email = email;
     }
 
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    public Date getCreated_at() {
+        return created_at;
+    }
+
+    public void setCreated_at(Date created_at) {
+        this.created_at = created_at;
+    }
+
+    public Date getUpdated_at() {
+        return updated_at;
+    }
+
+    public void setUpdated_at(Date updated_at) {
+        this.updated_at = updated_at;
+    }
+
     public Profile getProfile() {
         return profile;
     }
 
     public void setProfile(Profile profile) {
         this.profile = profile;
-    }
-
-    public int getRole() {
-        return role;
-    }
-
-    public void setRole(int role) {
-        this.role = role;
     }
 
     public Enterprise getEnterprise() {
@@ -77,27 +112,25 @@ public class Employee {
         this.enterprise = enterprise;
     }
 
-    public List<Transaction> getTransactionList() {
-        return transactionList;
+    public List<Transaction> getTransactions() {
+        return transactions;
     }
 
-    public void setTransactionList(List<Transaction> transactionList) {
-        this.transactionList = transactionList;
+    public void setTransactions(List<Transaction> transactions) {
+        this.transactions = transactions;
     }
 
-    public Date getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public Date getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(Date updatedAt) {
-        this.updatedAt = updatedAt;
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "id=" + id +
+                ", email='" + email + '\'' +
+                ", role=" + role +
+                ", created_at=" + created_at +
+                ", updated_at=" + updated_at +
+                ", profile=" + profile.getId() +
+                ", enterprise=" + enterprise.getId() +
+                ", transactions=" + transactions +
+                '}';
     }
 }

@@ -1,6 +1,5 @@
 package com.SAAS.ProyectoCorteII.Controller;
 
-
 import com.SAAS.ProyectoCorteII.Model.Enterprise;
 import com.SAAS.ProyectoCorteII.Services.EnterpriseService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,14 +12,15 @@ import java.util.Optional;
 @RequestMapping("/enterprise")
 public class EnterpriseController {
     @Autowired
-    private EnterpriseService enterpriseService;
+    EnterpriseService enterpriseService;
+
     @GetMapping
-    public ArrayList<Enterprise> getEnterprise(){
+    public ArrayList<Enterprise>getEnterprises(){
         return this.enterpriseService.getEnterprises();
     }
 
     @GetMapping(path = "/{id}")
-    public Optional<Enterprise> getEnterpriseById(@PathVariable int id){
+    public Enterprise getEnterpriseById(@PathVariable int id){
         return this.enterpriseService.getEnterpriseById(id);
     }
 
@@ -30,11 +30,11 @@ public class EnterpriseController {
     }
 
     @PutMapping(path = "/update-{id}")
-    public Enterprise updateEnterprise(@RequestBody Enterprise enterprise,@PathVariable int id){
-        return this.enterpriseService.updateEnterpriseById(enterprise,id);
+    public Enterprise updateEnterprise(@RequestBody Enterprise request,  @PathVariable int id){
+        return this.enterpriseService.updateEnterpriseById(request,id);
     }
 
-    @DeleteMapping("/delete-{id}")
+    @DeleteMapping(path = "/delete-{id}")
     public String deleteEnterprise(@PathVariable int id){
         boolean isDeleted = this.enterpriseService.deleteEnterpriseById(id);
         if (isDeleted){
@@ -44,5 +44,4 @@ public class EnterpriseController {
             return "Unexpected error: Enterprise with id:"+id+" was not deleted";
         }
     }
-
 }
