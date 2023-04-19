@@ -1,0 +1,110 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+
+}
+.InicioA{
+    width: 800px;
+    height: 740px;
+    background: #fffbd1;
+    margin: 180px auto auto;
+    box-shadow: 7px 13px 37px #000;
+    padding: 20px 30px;
+    border-top:4px solid #F4F5CF;
+    color: black;
+}
+.InicioA h5{
+    text-align: center;
+    height: 40px;
+    margin: 0 0 30px;
+    border-bottom: 1px solid;
+         }
+.BtnTablaEmployee{
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    display: inline-block;
+    width: 40%;
+    height: 40px;
+    background: #f1e856;
+    text-align: center;
+    padding: 30px 45px;
+    text-decoration: none;
+    margin-top: 90px;
+    margin-left: 40px;
+    color: black;
+    font-size: 14px;
+    font-weight: bold;
+    border: 5px ridge #f6b80d
+
+
+}
+.BtnTablaEmployee:hover{
+    background-color: #eaba7d;
+}
+.BtnTablaEnterprice{
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    display: inline-block;
+    width: 40%;
+    height: 40px;
+    background: #f1e856;
+    text-align: center;
+    padding: 30px 45px;
+    text-decoration: none;
+    margin-top: 90px;
+    margin-left: 40px;
+    color: black;
+    margin-bottom: 16px;
+    font-size: 14px;
+    font-weight: bold;
+    border: 5px ridge #f6b80d
+
+
+}
+.BtnTablaEnterprice:hover{
+    background-color: #eaba7d;
+}
+.BtnTablaProfile{
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    display: inline-block;
+    width: 40%;
+    height: 40px;
+    background: #f1e856;
+    text-align: center;
+    padding: 30px 45px;
+    text-decoration: none;
+    margin-top: 50px;
+    margin-left: 40px;
+    color: black;
+    margin-bottom: 16px;
+    font-size: 14px;
+    font-weight: bold;
+    border: 5px ridge #f6b80d
+
+
+}
+.BtnTablaProfile:hover{
+    background-color: #eaba7d;
+}
+.BtnTablaTransaction{
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    display: inline-block;
+    width: 40%;
+    height: 40px;
+    background: #f1e856;
+    text-align:center;
+    padding: 30px 45px;
+    text-decoration: none;
+    margin-top: 80px;
+    margin-left: 40px;
+    color: black;
+    margin-bottom: 16px;
+    font-size: 14px;
+    font-weight: bold;
+    border: 5px ridge #f6b80d
+}
+.BtnTablaTransaction:hover{
+    background-color: #eaba7d;
+}
