@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="">
+    <meta charset="UTF-8">
+    <title>Tabla Enterprise</title>
+    <link rel="stylesheet" href="../static/styles/estilo_tablaEnterprise.css">
+</head>
+<body>
+<h1 class="titulo_enterprise" align="center">Digitar tabla Enterprise</h1>
+<br />
+<div class="imagen" >
+
+
+    <img class="imagen_empresa" src="../static/images/dwawu.png" alt=""/>
+</div>
+
+<form >
+        ID:&nbsp;
+<label for="id"></label>
+<input type="number" name="id" id="id"
+                               size="20" maxlength="50" />
+    <br />
+    <br />
+    <br />
+    Nombre:&nbsp;
+<label for="name"></label>
+<input type="text" name="name" id="name"
+     size="20" maxlength="50" />
+    <br />
+    <br />
+    <br />
+    Documento:&nbsp;
+<label for="document"></label>
+<input type="number" name="document" id="document"
+                                     size="20" maxlength="50" />
+    <br />
+    <br />
+    <br />
+    Teléfono:&nbsp;
+    <input type="text" name="phone" id="phone"
+           size="20" maxlength="50" />
+    <br />
+    <br />
+    <br />
+    Dirección:&nbsp;
+    <input type="text" name="adress" id="adress"
+           size="20" maxlength="50" />
+    <br />
+    <br />
+    <br />
+    Usuario:&nbsp;
+    <input type="text" name="users" id="users"
+           size="20" maxlength="50" />
+    <br />
+    <br />
+    <br />
+    Transacción:&nbsp;
+    <input type="text" name="transaction" id="transaction"
+           size="20" maxlength="50" />
+    <br />
+    <br />
+    <br />
+    fecha:&nbsp;
+    <input type="datetime-local" name="createdAt" id="createdAt"
+           size="20" maxlength="50" />
+    <br />
+    <br />
+    <br />
+    <input type="submit" id="botonAceptar" name="botonAceptar"
+           value="Aceptar" />
+    &nbsp;&nbsp;
+    <input type="reset" id="botonBorrar" value="Borrar" />
+
+</form>
+
+</body>
+</html>
