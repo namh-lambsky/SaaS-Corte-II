@@ -8,8 +8,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.Optional;
 
+
 @RestController
-@RequestMapping("/transaction")
+@RequestMapping("transaction")
 public class TransactionController {
     @Autowired
     TransactionService transactionService;
