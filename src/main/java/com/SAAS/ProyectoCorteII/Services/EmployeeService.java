@@ -38,6 +38,9 @@ public class EmployeeService {
                 .orElseThrow(() -> new EntityNotFoundException("Employee not found with id: " + id));
     }
 
+    public Employee getEmployeeByEmail(String email) {
+        return employeeRepository.findAllByEmail(email);
+    }
 
     public Profile getProfileById(int id) {
         return profileRepository.findById(id)

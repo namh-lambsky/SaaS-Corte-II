@@ -10,6 +10,7 @@ import java.util.Optional;
 
 
 @RestController
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RequestMapping("transaction")
 public class TransactionController {
     @Autowired

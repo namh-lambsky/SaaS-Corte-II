@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RequestMapping("/enterprise")
 public class EnterpriseController {
     @Autowired
