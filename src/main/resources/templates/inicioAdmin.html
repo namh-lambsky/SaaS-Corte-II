@@ -3,34 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <title>InicioAdministrador</title>
-    <link rel="stylesheet" href="../static/styles/estilo_inicioA.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 </head>
 <body>
+
+<header>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">DWAWU</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                    aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-link active" aria-current="page" href="http://localhost:63342/SaaS-Corte-II-main/ProyectoCorteII/templates/pagina_inicio.html">Salir</a>
+
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+
+
+
 <section class="InicioA">
     <h5> Bienvenido Administrador </h5>
-          <div style="text-align: center">
-            <a class="BtnTablaEnterprice"
-               href="http://localhost:63342/interfacesSOA/tablaEnterprice.html">
-                Tabla Enterprice
-            </a>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        Tablas disponibles
+                    </div>
+                    <div class="card-body" >
 
-            <a class="BtnTablaProfile"
-               href="http://localhost:63342/interfacesSOA/tablaProfile.html">
-                Tabla Profile
-            </a>
-          </div>
-    <div  >
-        <a class="BtnTablaTransaction"
-           href="http://localhost:63342/interfacesSOA/tablaTransaction.html">
-            Tabla Transaction
-        </a>
-
-        <a class="BtnTablaEmployee"
-           href="http://localhost:63342/interfacesSOA/tablaEmployee.html">
-            Tabla Employee
-        </a>
-
+                        <a  class="btn btn-primary" href="http://localhost:63342/SaaS-Corte-II-main/ProyectoCorteII/templates/tablaEnterprise.html" style="text-align: center; background: #8699F7">Tabla Empresa</a>
+                        <a  class="btn btn-primary" href="tablaProfile.html" style="text-align: center; background: #6277DE">Tabla Perfil</a>
+                        <a  class="btn btn-primary" href="tablaTransaction.html" style="text-align: center; background: #4F60B6">Tabla Transacción</a>
+                        <a  class="btn btn-primary" href="tablaEmployee.html" style="text-align: center; background: #46559E ">Tabla Empleado</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
 
 
 </section>

@@ -3,75 +3,97 @@
 <head th:replace="">
     <meta charset="UTF-8">
     <title>Tabla Enterprise</title>
-    <link rel="stylesheet" href="../static/styles/estilo_tablaEnterprise.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 </head>
 <body>
-<h1 class="titulo_enterprise" align="center">Digitar tabla Enterprise</h1>
+
+<header>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">DWAWU</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                    aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-link active" aria-current="page" href="inicioAdmin.html">Regresar</a>
+                    <a class="nav-link active" aria-current="page" href="pagina_inicio.html">Salir</a>
+
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+
+
+<h1 class="titulo_enterprise" align="center">Tabla Empresa</h1>
 <br />
-<div class="imagen" >
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    Digita los datos
+                </div>
+                <div class="card-body" >
+                    <form>
+                        <div class="mb-3" >
+                            <label for="id_enterprise" class="form-label">ID</label>
+                            <input type="number" class="form-control" id="id_enterprise" required>
+
+                            <label for="name" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="name" required>
+
+                            <label for="document" class="form-label">Documento</label>
+                            <input type="number" class="form-control" id="document" required>
+
+                            <label for="phone" class="form-label">Teléfono</label>
+                            <input type="number" class="form-control" id="phone" required>
+
+                            <label for="adress" class="form-label">Dirección</label>
+                            <input type="text" class="form-control" id="adress" required>
 
 
-    <img class="imagen_empresa" src="../static/images/dwawu.png" alt=""/>
+
+
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" style="text-align: center; background: #2ECC71">Agregar</button>
+                        <button type="reset" class="btn btn-primary" style="text-align: center; background: #C0392B">Borrar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
-<form >
-        ID:&nbsp;
-<label for="id"></label>
-<input type="number" name="id" id="id"
-                               size="20" maxlength="50" />
-    <br />
-    <br />
-    <br />
-    Nombre:&nbsp;
-<label for="name"></label>
-<input type="text" name="name" id="name"
-     size="20" maxlength="50" />
-    <br />
-    <br />
-    <br />
-    Documento:&nbsp;
-<label for="document"></label>
-<input type="number" name="document" id="document"
-                                     size="20" maxlength="50" />
-    <br />
-    <br />
-    <br />
-    Teléfono:&nbsp;
-    <input type="text" name="phone" id="phone"
-           size="20" maxlength="50" />
-    <br />
-    <br />
-    <br />
-    Dirección:&nbsp;
-    <input type="text" name="adress" id="adress"
-           size="20" maxlength="50" />
-    <br />
-    <br />
-    <br />
-    Usuario:&nbsp;
-    <input type="text" name="users" id="users"
-           size="20" maxlength="50" />
-    <br />
-    <br />
-    <br />
-    Transacción:&nbsp;
-    <input type="text" name="transaction" id="transaction"
-           size="20" maxlength="50" />
-    <br />
-    <br />
-    <br />
-    fecha:&nbsp;
-    <input type="datetime-local" name="createdAt" id="createdAt"
-           size="20" maxlength="50" />
-    <br />
-    <br />
-    <br />
-    <input type="submit" id="botonAceptar" name="botonAceptar"
-           value="Aceptar" />
-    &nbsp;&nbsp;
-    <input type="reset" id="botonBorrar" value="Borrar" />
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Documento</th>
+        <th scope="col">Teléfono</th>
+        <th scope="col">Dirección</th>
+        <th scope="col">users</th>
+        <th scope="col">Transacción</th>
 
-</form>
-
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td id="id_enterprise_td"> </td>
+        <td id="name_td"> </td>
+        <td id="document_td"> </td>
+        <td id="phone_td"> </td>
+        <td id="adress_td"> </td>
+        <td id="usersEnter_td"> </td>
+        <td id="transactionEnter_td"> </td>
+    </tr>
+    </tbody>
+</table>
 </body>
 </html>
